@@ -39,16 +39,28 @@ class Transactions extends Component {
   render() {
     return( 
       <View>
-        {this.renderTransactionRow()}
+        <View style={{ flexDirection: 'row', marginHorizontal: 10, marginTop: 20 }}>
+          <View style={{ flex: 1 }}>
+            <Text>Transactions</Text>
+          </View>
+          <View style={{ alignSelf: 'flex-end', flexDirection: 'row' }}>
+            <Text>${this.props.ledger}</Text>
+            <Text>In account</Text>
+          </View>
+        </View>
+        <View>
+          {this.renderTransactionRow()}
+        </View>
       </View>
     )
   }
 }
 
 const mapStateToProps = ({ transactionReducer }) => {
-  const { myTransactions } = transactionReducer;
+  const { myTransactions, ledger } = transactionReducer;
   return {
-    myTransactions
+    myTransactions,
+    ledger
   };
 };
 
